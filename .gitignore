@@ -1,2 +1,5 @@
-# platforms directory for `ionic platform add <platform>`
+# platforms directory for built packages
 platforms/
+
+# bower components
+bower_components/
