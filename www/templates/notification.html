@@ -1,0 +1,36 @@
+<!--
+-- Template used in showing individual notifications. Allows user to
+-- upvote/downvote a notification.
+-->
+
+<ion-view view-title="Notification">
+
+  <div class="list card">
+
+    <div class="item item-avatar">
+      <img src="{{notification.profilePicture}}">
+      <h2>{{notification.username}}</h2>
+      <p>{{notification.timestamp}}</p>
+    </div>
+
+    <div class="item item-body">
+      <p>{{notification.content}}</p>
+    </div>
+
+  <div class="item tabs tabs-secondary tabs-icon-left">
+    <div class="tab-item">
+      <div>{{notification.votes}}</div>
+      <div>
+        <a href="#">
+          <i class="icon ion-chevron-up"></i>
+        </a>
+        <a href="#">
+          <i class="icon ion-chevron-down"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  </div> <!-- div class="list card"-->
+
+</ion-view>
