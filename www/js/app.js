@@ -20,8 +20,36 @@ angular.module('naijav', ['ionic', 'naijav.controllers'])
   .state('app', {
     url: "/app",
     abstract: true,
-    templateUrl: "templates/menu.html",
+    templateUrl: "templates/shell.html",
     controller: 'AppCtrl'
+  })
+
+  .state('app.home', {
+    url: "/home",
+    views: {
+      'mainContent': {
+        templateUrl: "templates/home.html"
+      }
+    }
+  })
+
+  .state('app.settings', {
+    url: "/settings",
+    views: {
+      'mainContent': {
+        templateUrl: "templates/settings.html"
+      }
+    }
+  })
+
+  .state('app.notification', {
+    url: "/notification/:notificationId",
+    views: {
+      'mainContent': {
+        templateUrl: "templates/notification.html",
+        controller: "NotificationCtrl"
+      }
+    }
   })
 
   .state('app.search', {
@@ -61,5 +89,5 @@ angular.module('naijav', ['ionic', 'naijav.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/home');
 });
