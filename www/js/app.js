@@ -42,6 +42,33 @@ angular.module('naijav', ['ionic', 'naijav.controllers'])
     }
   })
 
+  .state('app.browse', {
+    url: "/browse",
+    views: {
+      'mainContent': {
+        templateUrl: "templates/browse.html"
+      }
+    }
+  })
+
+  .state('app.browse.routes', {
+    url: "/browse/routes",
+    views: {
+      'routes': {
+        templateUrl: "templates/routes.html"
+      }
+    }
+  })
+
+  .state('app.browse.saccos', {
+    url: "/browse/saccos",
+    views: {
+      'saccos': {
+        templateUrl: "templates/saccos.html"
+      }
+    }
+  })
+
   .state('app.notification', {
     url: "/notification/:notificationId",
     views: {
@@ -52,42 +79,6 @@ angular.module('naijav', ['ionic', 'naijav.controllers'])
     }
   })
 
-  .state('app.search', {
-    url: "/search",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/search.html"
-      }
-    }
-  })
-
-  .state('app.browse', {
-    url: "/browse",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/browse.html"
-      }
-    }
-  })
-    .state('app.playlists', {
-      url: "/playlists",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: "/playlists/:playlistId",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/playlist.html",
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 });

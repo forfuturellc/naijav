@@ -45,5 +45,6 @@ angular.module('naijav.controllers', [])
 
 
 .controller('NotificationCtrl', function($scope, $stateParams) {
-
+  // We shall use the BaraService to retrieve the notification with the
+  // id, $stateParams.notificationId
 });
