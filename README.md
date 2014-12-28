@@ -1,6 +1,8 @@
 
 # naijav
 
+[![Dependency Status](https://gemnasium.com/forfuture-dev/naijav.svg)](https://gemnasium.com/forfuture-dev/naijav)
+
 A Client Application for the [Bara Transport Notification System][bara],
  localized for Matatus in Kenya
 
