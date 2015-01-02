@@ -1,1 +1,11 @@
-/* Empty. Add your own CSS if you like */
+/**
+* Copyright (c) 2014-2015 Forfuture LLC
+*/
+
+
+/*Timestamp shown next to notifications in timeline*/
+.notification-timestamp {
+  position: absolute;
+  right: 5%;
+  top: 40%;
+}

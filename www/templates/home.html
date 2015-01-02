@@ -1,17 +1,18 @@
-<!-- Template for Timeline. The Timeline is designed to be clutter-free
----- thus less distractive
+<!--
+- Template for Timeline. The Timeline is designed to be clutter-free
+- thus less distractive
 -->
 
 <ion-view name="timeline" view-title="Timeline">
   <ion-content>
-    <p>Notifications will appear here</p>
     <ion-list>
       <ion-item class="item item-avatar"
         ng-repeat="notification in notifications"
         href="#/app/notification/{{notification.id}}">
         <img src="{{notification.profilePicture}}">
         <h2>{{notification.username}}</h2>
-        <p>{{notification.content}}</p>
+        <p>{{notification.message}}</p>
+        <span class="notification-timestamp">{{notification.timestamp}}</span>
       </ion-item>
     </ion-list>
   </ion-content>

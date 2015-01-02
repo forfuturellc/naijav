@@ -1,3 +1,12 @@
+/**
+* Main Angular Module
+* Copyright (c) 2014-2015 Forfuture LLC
+*/
+
+
+"use strict";
+
+
 angular.module('naijav', ['ionic', 'naijav.controllers'])
 
 .run(function($ionicPlatform) {
@@ -28,7 +37,8 @@ angular.module('naijav', ['ionic', 'naijav.controllers'])
     url: "/home",
     views: {
       'mainContent': {
-        templateUrl: "templates/home.html"
+        templateUrl: "templates/home.html",
+        controller: "HomeCtrl"
       }
     }
   })

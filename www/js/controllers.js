@@ -1,11 +1,36 @@
 /**
-* Copyright (c) 2014 Forfuture LLC
+* All Angular controllers for the Application
+* Copyright (c) 2014-2015 Forfuture LLC
 */
 
 "use strict";
 
 
-angular.module('naijav.controllers', [])
+angular.module('naijav.controllers', [])//["BaraService"])
+
+
+.factory("BaraService", [function() {
+  var n =  [
+    {id: 1, message: "accident at strath", username: "gocho",
+    timestamp: "14:14", votes: 101},
+    {id: 2, message: "traffic jam", username: "brian",
+    timestamp: "10:20", votes: 14}
+  ];
+  return {
+    notifications: {
+      get: function(id) {
+        if (! id) {
+          return n;
+        }
+        id = parseInt(id);
+        for (var index = 0; index < n.length; index++) {
+          if (n[index].id === id) { return n[index]; }
+        }
+      }
+    }
+  }
+}])
+
 
 /**
 * Controller used throughout the Application
@@ -44,7 +69,14 @@ angular.module('naijav.controllers', [])
 })
 
 
-.controller('NotificationCtrl', function($scope, $stateParams) {
+.controller("HomeCtrl", function($scope, BaraService) {
+  $scope.notifications = BaraService.notifications.get();
+})
+
+
+.controller('NotificationCtrl', function($scope, $stateParams, BaraService) {
   // We shall use the BaraService to retrieve the notification with the
   // id, $stateParams.notificationId
+  console.log($stateParams);
+  $scope.notification = BaraService.notifications.get($stateParams.notificationId);
 });
