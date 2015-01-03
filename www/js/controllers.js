@@ -6,30 +6,7 @@
 "use strict";
 
 
-angular.module('naijav.controllers', [])//["BaraService"])
-
-
-.factory("BaraService", [function() {
-  var n =  [
-    {id: 1, message: "accident at strath", username: "gocho",
-    timestamp: "14:14", votes: 101},
-    {id: 2, message: "traffic jam", username: "brian",
-    timestamp: "10:20", votes: 14}
-  ];
-  return {
-    notifications: {
-      get: function(id) {
-        if (id >= 0) {
-          id = parseInt(id);
-          for (var index = 0; index < n.length; index++) {
-            if (n[index].id === id) { return n[index]; }
-          }
-        }
-        return n;
-      }
-    }
-  }
-}])
+angular.module('naijav.controllers', ["Bara", "BaraData"])
 
 
 /**
@@ -69,13 +46,12 @@ angular.module('naijav.controllers', [])//["BaraService"])
 })
 
 
-.controller("HomeCtrl", function($scope, BaraService) {
+.controller("HomeCtrl", function($scope, BaraService, BaraServiceDataFixtures) {
+  BaraService.initializeData(BaraServiceDataFixtures.get());
   $scope.notifications = BaraService.notifications.get();
   $scope.refreshNotifications = function() {
     var n = BaraService.notifications.get(1);
-    console.log(n);
     $scope.notifications.unshift(n);
-    console.log($scope.notifications);
     $scope.$broadcast("scroll.refreshComplete");
     $scope.$apply();
   };
