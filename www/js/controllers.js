@@ -19,13 +19,13 @@ angular.module('naijav.controllers', [])//["BaraService"])
   return {
     notifications: {
       get: function(id) {
-        if (! id) {
-          return n;
+        if (id >= 0) {
+          id = parseInt(id);
+          for (var index = 0; index < n.length; index++) {
+            if (n[index].id === id) { return n[index]; }
+          }
         }
-        id = parseInt(id);
-        for (var index = 0; index < n.length; index++) {
-          if (n[index].id === id) { return n[index]; }
-        }
+        return n;
       }
     }
   }
@@ -71,6 +71,14 @@ angular.module('naijav.controllers', [])//["BaraService"])
 
 .controller("HomeCtrl", function($scope, BaraService) {
   $scope.notifications = BaraService.notifications.get();
+  $scope.refreshNotifications = function() {
+    var n = BaraService.notifications.get(1);
+    console.log(n);
+    $scope.notifications.unshift(n);
+    console.log($scope.notifications);
+    $scope.$broadcast("scroll.refreshComplete");
+    $scope.$apply();
+  };
 })
 
 

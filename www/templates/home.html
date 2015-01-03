@@ -5,6 +5,7 @@
 
 <ion-view name="timeline" view-title="Timeline">
   <ion-content>
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="refreshNotifications()"></ion-refresher>
     <ion-list>
       <ion-item class="item item-avatar"
         ng-repeat="notification in notifications"
