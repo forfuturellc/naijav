@@ -3,8 +3,6 @@
 * Copyright (c) 2014-2015 Forfuture LLC
 */
 
-"use strict";
-
 
 angular.module('naijav.controllers', ["Bara", "BaraData"])
 
@@ -13,6 +11,8 @@ angular.module('naijav.controllers', ["Bara", "BaraData"])
 * Controller used throughout the Application
 */
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+  "use strict";
+
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -47,6 +47,8 @@ angular.module('naijav.controllers', ["Bara", "BaraData"])
 
 
 .controller("HomeCtrl", function($scope, BaraService, BaraServiceDataFixtures) {
+  "use strict";
+
   BaraService.initializeData(BaraServiceDataFixtures.get());
   $scope.notifications = BaraService.notifications.get();
   $scope.refreshNotifications = function() {
@@ -59,6 +61,8 @@ angular.module('naijav.controllers', ["Bara", "BaraData"])
 
 
 .controller('NotificationCtrl', function($scope, $stateParams, BaraService) {
+  "use strict";
+
   // We shall use the BaraService to retrieve the notification with the
   // id, $stateParams.notificationId
   console.log($stateParams);
@@ -67,6 +71,7 @@ angular.module('naijav.controllers', ["Bara", "BaraData"])
 
 
 .controller("RoutesCtrl", function($scope, BaraServiceDataFixtures) {
-  $scope.routes = BaraServiceDataFixtures.getRoutes();
-})
+  "use strict";
 
+  $scope.routes = BaraServiceDataFixtures.getRoutes();
+});

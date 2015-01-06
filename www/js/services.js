@@ -3,13 +3,13 @@
 * Copyright (c) 2014-2015 Forfuture LLC
 */
 
-"use strict";
-
 
 angular.module("naijav.services", ["ngResource"])
 
 
 .factory("BaraService", ["$resource", function($resource) {
+  "use strict";
+
 //  var service = $resource("http://localhost:8100");
 //  return {
 //    service: service
@@ -23,5 +23,5 @@ angular.module("naijav.services", ["ngResource"])
         ];
       }
     }
-  }
-}])
+  };
+}]);

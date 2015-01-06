@@ -4,12 +4,11 @@
 */
 
 
-"use strict";
-
-
 angular.module('naijav', ['ionic', 'naijav.controllers'])
 
 .run(function($ionicPlatform) {
+  "use strict";
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -24,6 +23,8 @@ angular.module('naijav', ['ionic', 'naijav.controllers'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
+  "use strict";
+
   $stateProvider
 
   .state('app', {
@@ -88,7 +89,7 @@ angular.module('naijav', ['ionic', 'naijav.controllers'])
         controller: "NotificationCtrl"
       }
     }
-  })
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
