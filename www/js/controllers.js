@@ -63,4 +63,10 @@ angular.module('naijav.controllers', ["Bara", "BaraData"])
   // id, $stateParams.notificationId
   console.log($stateParams);
   $scope.notification = BaraService.notifications.get($stateParams.notificationId);
-});
+})
+
+
+.controller("RoutesCtrl", function($scope, BaraServiceDataFixtures) {
+  $scope.routes = BaraServiceDataFixtures.getRoutes();
+})
+

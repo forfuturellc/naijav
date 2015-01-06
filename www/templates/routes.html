@@ -1,5 +1,14 @@
 <ion-view view-title="Routes" >
   <ion-content>
-    <p>Routes will appear here</p>
+
+    <ion-list>
+      <ion-item class="item"
+        ng-repeat="route in routes"
+        href="#/app/routes/{{route.id}}">
+        <span class="routes-number">{{route.code}}</span>
+        <h2>{{route.pointA}} - {{route.pointB}}</h2>
+      </ion-item>
+    </ion-list>
+
   </ion-content>
 </ion-view>

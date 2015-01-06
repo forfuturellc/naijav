@@ -65,7 +65,8 @@ angular.module('naijav', ['ionic', 'naijav.controllers'])
     url: "/browse/routes",
     views: {
       'routes': {
-        templateUrl: "templates/routes.html"
+        templateUrl: "templates/routes.html",
+        controller: "RoutesCtrl"
       }
     }
   })
