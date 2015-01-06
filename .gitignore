@@ -3,3 +3,6 @@ platforms/
 
 # bower components
 bower_components/
+
+# External libraries
+www/lib/
