@@ -9,3 +9,6 @@ www/lib/
 
 # node modules
 node_modules/
+
+# compiled scss files from ./scss/
+www/css/ionic.app.*
