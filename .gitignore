@@ -6,3 +6,6 @@ bower_components/
 
 # External libraries
 www/lib/
+
+# node modules
+node_modules/
