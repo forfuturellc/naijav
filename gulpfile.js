@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
+var lodash = require("lodash");
 var sh = require('shelljs');
 
 
@@ -21,6 +22,8 @@ var paths = {
 
 // task: installs gulp
 gulp.task('install', ['git-check'], function() {
+  "use strict";
+
   return bower.commands.install()
     .on('log', function(data) {
       gutil.log('bower', gutil.colors.cyan(data.id), data.message);
@@ -30,6 +33,8 @@ gulp.task('install', ['git-check'], function() {
 
 // task: checks if git is installed
 gulp.task('git-check', function(done) {
+  "use strict";
+
   if (!sh.which('git')) {
     console.log(
       '  ' + gutil.colors.red('Git is not installed.'),
@@ -45,6 +50,8 @@ gulp.task('git-check', function(done) {
 
 // task: compiles sass into css
 gulp.task('sass', function(done) {
+  "use strict";
+
   gulp.src('./scss/ionic.app.scss')
     .pipe(sass())
     .pipe(gulp.dest('./www/css/'))
@@ -59,7 +66,9 @@ gulp.task('sass', function(done) {
 
 // task: hints javascript files
 gulp.task("jshint", function() {
-  return gulp.src(paths.js)
+  "use strict";
+
+  return gulp.src(lodash.flatten(["gulpfile.js", paths.js]))
     .pipe(jshint())
     .pipe(jshint.reporter("default"));
 });
@@ -67,9 +76,15 @@ gulp.task("jshint", function() {
 
 // task: watches changes
 gulp.task('watch', function() {
+  "use strict";
+
   gulp.watch(paths.sass, ['sass']);
 });
 
 
 // task: the default task
 gulp.task('default', ['sass']);
+
+
+// task: runs tests
+gulp.task("test", ["jshint"]);
