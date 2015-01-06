@@ -3,6 +3,13 @@
   "version": "0.0.0",
   "description": "A Client Application for the Bara Transport Notification System, localized for Matatus in Kenya",
   "homepage": "https://forfuture-dev.github.io/naijav",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/forfuture-dev/naijav.git"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
