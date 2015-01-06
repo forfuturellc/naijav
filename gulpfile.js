@@ -68,9 +68,10 @@ gulp.task('sass', function(done) {
 gulp.task("jshint", function() {
   "use strict";
 
-  return gulp.src(lodash.flatten(["gulpfile.js", paths.js]))
+ gulp.src(lodash.flatten(["gulpfile.js", paths.js]))
     .pipe(jshint())
-    .pipe(jshint.reporter("default"));
+    .pipe(jshint.reporter("default"))
+    .pipe(jshint.reporter("fail"));
 });
 
 
