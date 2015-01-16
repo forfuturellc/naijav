@@ -18,9 +18,66 @@
 */
 
 
+/*Lato Font*/
+@font-face {
+  font-family: 'Lato';
+  src: url('fonts/lato/lato-black.eot');
+  src: url('fonts/lato/lato-black.eot?#iefix') format('embedded-opentype'), url('../fonts/lato/lato-black.woff') format('woff'), url('../fonts/lato/lato-black.ttf') format('truetype'), url('../fonts/lato/lato-black.svg#latoblack') format('svg');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+/*Raleway Font*/
+@font-face {
+  font-family: 'Raleway';
+  src: url('fonts/raleway_regular-webfont/raleway_regular-webfont.eot');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+/*All Page elements*/
+* {
+  font-family: "Raleway";
+  font-size: 14px !important;
+}
+
+
 /*Timestamp shown next to notifications in timeline*/
 .notification-timestamp {
   position: absolute;
   right: 5%;
   top: 40%;
+}
+
+/*Container with space around it*/
+.container {
+  padding: 10px;
+}
+
+
+/*Profile Picture container*/
+.settings-profile-picture {
+  text-align: center;
+  height: 128px;
+  overflow: hidden;
+}
+
+
+/*Profile Picture Image in Settings*/
+.settings-profile-picture img {
+  height: 128px;
+  width: 128px;
+}
+
+
+/*Placeholder icons in form inputs*/
+.placeholder-icon {
+  margin-right: 10px;
+}
+
+.login-buttons button {
+  background: transparent;
+  border: 0;
 }

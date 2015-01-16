@@ -20,6 +20,41 @@
 
 <ion-view view-title="Settings">
   <ion-content>
-    <p>Setting will be tweaked here</p>
+
+    <!--Profile-->
+    <section class="container">
+      <!--Profile Pic-->
+      <div class="settings-profile-picture">
+        <img src="{{user.imageUrl}}">
+      </div> <!--/Profile Pic>
+
+      <!--Form-->
+      <div class="container">
+        <div class="list">
+          <label class="item item-input">
+            <input type="text" placeholder="NickName" value="{{user.name}}">
+            <i class="icon ion-edit placeholder-icon"></i>
+          </label>
+          <label class="item item-input">
+            <input type="email" placeholder="Email Address" value="{{user.email}}">
+            <i class="icon ion-edit placeholder-icon"></i>
+          </label>
+        </div>
+      </div><!--/Form-->
+
+      <!--Preferences-->
+      <div class="container">
+        <ul class="list">
+          <li class="item item-checkbox">
+             <label class="checkbox">
+               <input type="checkbox" ng-checked="{{user.prefs.autoNotify}}">
+             </label>
+             Download notifications automatically
+          </li>
+        </ul>
+      </div><!--Preferences-->
+
+    </section><!--/Profile-->
+
   </ion-content>
 </ion-view>

@@ -62,7 +62,8 @@ angular.module('naijav', ['ionic', 'naijav.controllers'])
     url: "/settings",
     views: {
       'mainContent': {
-        templateUrl: "templates/settings.html"
+        templateUrl: "templates/settings.html",
+        controller: "UserCtrl"
       }
     }
   })

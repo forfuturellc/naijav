@@ -81,6 +81,10 @@ angular.module('naijav.controllers', ["Bara", "BaraData"])
   // id, $stateParams.notificationId
   console.log($stateParams);
   $scope.notification = BaraService.notifications.get($stateParams.notificationId);
+
+  // Allow voting up and down
+  $scope.voteUp = BaraService.voteUp($stateParams.notificationId);
+  $scope.voteDown = BaraService.voteDown($stateParams.notificationId);
 })
 
 
@@ -88,4 +92,17 @@ angular.module('naijav.controllers', ["Bara", "BaraData"])
   "use strict";
 
   $scope.routes = BaraServiceDataFixtures.getRoutes();
+})
+
+
+.controller("UserCtrl", function($scope) {
+  // default profile pic url = img/avatar_1.png
+  $scope.user = {
+    name: "GochoMugo",
+    email: "mugo@forfuture.co.ke",
+    imageUrl: "lib/img/gocho.png",
+    prefs: {
+      autoNotify: true
+    }
+  };
 });
