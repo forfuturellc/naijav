@@ -1,0 +1,5 @@
+# jekyll's output
+_site/
+
+# sass compiler's cache
+.sass-cache/
