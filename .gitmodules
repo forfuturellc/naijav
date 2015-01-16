@@ -1,0 +1,3 @@
+[submodule "www/bara"]
+	path = www/bara
+	url = https://github.com/forfuture-dev/bara-angular-service.git
