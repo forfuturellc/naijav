@@ -5,16 +5,20 @@
 
   <body>
 
-    {% include header.html %}
+    <div class="container col-md-8 col-md-offset-2">
 
-    <div class="container">
-        {{ content }}
+      {% include header.html %}
+
+      <div id="default-content">
+          {{ content }}
+      </div>
+
+      {% include footer.html %}
+
+
+      {% include scripts.html %}
+
     </div>
-
-    {% include footer.html %}
-
-
-    {% include scripts.html %}
 
   </body>
 
