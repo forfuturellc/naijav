@@ -4,7 +4,7 @@ email: we@forfuture.co.ke
 description: >
   Naijav is a Client Application for the Bara Transport Notification Service
   localized for public transport in Kenya.
-baseurl: /naijav/
+baseurl: /naijav
 url: http://dev.forfuture.co.ke
 github_username:  forfuture-dev
 
