@@ -1,2 +1,7 @@
 <script src="{{ '/js/jquery.min.js' | prepend: site.baseurl }}"></script>
 <script src="{{ '/js/bootstrap.min.js' | prepend: site.baseurl }}"></script>
+{% if page.scripts %}
+  {% for script in page.scripts %}
+    <script src="{{ script | prepend: site.baseurl }}"></script>
+  {% endfor %}
+{% endif %}
