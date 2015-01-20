@@ -32,11 +32,18 @@ permalink: /partials/user/
     <div class="col-md-12">
       <p>While we provide a form here for providing feedback, we really suggest you use our <a href="https://github.com/forfuture-dev/naijav/issues">Github issue tracker</a> to for better tracking and response. But if you feel like that is such a task, please fill the form below.</p>
       <form ng-submit="sendFeedback()">
-        <textarea name="feedback" placeholder="Tell us what you think and feel..." class="form-control" ng-model="feedback"></textarea>
+        <textarea name="feedback" placeholder="Tell us what you think and feel..." class="form-control" ng-model="feedback" required></textarea>
         <input type="submit" class="btn btn-primary" value="Let us know">
       </form>
     </div>
   </section><!--/Feedback-->
+
+  <hr>
+
+  <div class="container center-spaced">
+    <p>Am done. It's time to leave</p>
+    <button class="btn btn-danger">Logout</button>
+  </div>
 
 </div>
 
