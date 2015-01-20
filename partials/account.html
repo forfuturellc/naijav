@@ -8,7 +8,7 @@ permalink: /partials/account/
   <!--counter-->
   <div>
     <div class="signup-counter">
-      <h2 class="signup-counter-count">00</h2>
+      <h2 class="signup-counter-count">{% raw %}{{ memberCount }}{% endraw %}</h2>
       <span>members</span>
       <h3>Join Others for a Better Naijav</h3>
     </div>
@@ -28,10 +28,10 @@ permalink: /partials/account/
       <div id="preview-panel-collapse-1" class="panel-collapse collapse in">
         <div class="panel-body">
           <div class="col-md-6">
-            <form>
-              <input type="text" class="form-control" placeholder="Username">
-              <input type="email" class="form-control" placeholder="Email Address">
-              <input type="password" class="form-control" placeholder="Password">
+            <form ng-submit="signup()">
+              <input type="text" class="form-control" placeholder="Username" ng-model="newUsername" required>
+              <input type="email" class="form-control" placeholder="Email Address" ng-model="newEmail" required>
+              <input type="password" class="form-control" placeholder="Password" ng-model="newPassword" required>
               <input type="submit" class="btn btn-primary" value="Signup">
             </form>
           </div>
@@ -59,9 +59,9 @@ permalink: /partials/account/
       <div id="preview-panel-collapse-2" class="panel-collapse collapse">
         <div class="panel-body">
           <div class="col-md-6">
-            <form>
-              <input type="text" class="form-control" placeholder="Username">
-              <input type="password" class="form-control" placeholder="Password">
+            <form ng-submit="login()">
+              <input type="text" class="form-control" placeholder="Username" ng-model="loginUsername" required>
+              <input type="password" class="form-control" placeholder="Password" ng-model="loginPassword" required>
               <input type="submit" class="btn btn-primary" value="Login">
             </form>
           </div>
