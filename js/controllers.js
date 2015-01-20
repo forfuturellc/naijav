@@ -1,5 +1,6 @@
 
 var backendUrl = 'http://localhost:8090';
+var timeout = 5000;
 
 angular.module('Naijav.Site.Controllers', ["ngResource"])
 
@@ -41,7 +42,7 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
       setTimeout(function() {
         $location.path("/user");
         $scope.$apply();
-      }, 1000);
+      }, timeout);
     })
     .error(function(data, status, header, config) {
       if (status === 400) {
@@ -61,12 +62,12 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
       password: $scope.loginPassword
     })
     .success(function(data, status, headers, config) {
-      $scope.alertMessage = $sce.trustAsHtml("<strong>Okey!</strong> You are logged in!");
+      $scope.alertMessage = $sce.trustAsHtml("<strong>Okey!</strong> You are logged in! Switching you to your settings.");
       $scope.alertClass = "alert-success";
       setTimeout(function() {
         $location.path("/user");
         $scope.$apply();
-      }, 1000);
+      }, timeout);
     })
     .error(function(data, status, headers, config) {
       if (status >= 400 && status < 500) {
@@ -81,7 +82,28 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
 }])
 
 
-.controller('UserCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
-  // Using route param to retrieve user data
-  
+.controller('UserCtrl', ['$scope', '$sce', '$location', '$http', function($scope, $sce, $location, $http) {
+  // $scope variables
+  $scope.alertMessage =
+  $scope.alertClass =
+  $scope.emailUpdates =
+  $scope.feedback = null;
+
+  // retrieving user data
+  $http.get(backendUrl + "/members/settings")
+  .success(function(data) {
+    $scope.emailUpdates = !!data.email_updates;
+  })
+  .error(function(data, status, headers) {
+    if (status === 401 || status === 403) {
+      $scope.alertMessage = $sce.trustAsHtml("<strong>Hey!</strong> You not logged in! Redirecting to Login!");
+      setTimeout(function() {
+        $location.path("/account");
+        $scope.$apply();
+      }, timeout);
+    } else {
+      $scope.alertMessage = $sce.trustAsHtml("<strong>Hey!</strong> Finding it hard to retrieve data!");
+    }
+    $scope.alertClass = "alert-danger";
+  });
 }])

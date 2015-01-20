@@ -5,6 +5,9 @@ permalink: /partials/user/
 
 <div>
 
+  <!--Request Alerts-->
+  <div class="alert transition ngClass: alertClass" ng-hide="!alertMessage" ng-bind-html="alertMessage"></div>
+
   <!--Preferences-->
   <section class="row user-content-container">
     <h3 class="user-content-heading">Preferences</h3>
@@ -15,7 +18,7 @@ permalink: /partials/user/
         <p>Receive email updates</p>
       </div>
       <div class="col-md-2">
-        <input type="checkbox" data-toggle="switch" checked>
+        <input type="checkbox" data-toggle="switch" ng-checked="emailUpdates">
       </div>
     </div>
 
