@@ -10,7 +10,9 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
   $scope.alertMessage =
   $scope.newUsername =
   $scope.newEmail =
-  $scope.newPassword = null;
+  $scope.newPassword =
+  $scope.loginUsername =
+  $scope.loginPassword = null;
 
   // Member Count
   function memberCount() {
@@ -38,6 +40,7 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
       memberCount();
       setTimeout(function() {
         $location.path("/user");
+        $scope.$apply();
       }, 1000);
     })
     .error(function(data, status, header, config) {
@@ -51,12 +54,34 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
   };
 
   // Member login
-  $scope.login = function login() {};
+  $scope.login = function login() {
+    $scope.alertMessage = null;
+    $http.post(backendUrl + "/members/login", {
+      username: $scope.loginUsername,
+      password: $scope.loginPassword
+    })
+    .success(function(data, status, headers, config) {
+      $scope.alertMessage = $sce.trustAsHtml("<strong>Okey!</strong> You are logged in!");
+      $scope.alertClass = "alert-success";
+      setTimeout(function() {
+        $location.path("/user");
+        $scope.$apply();
+      }, 1000);
+    })
+    .error(function(data, status, headers, config) {
+      if (status >= 400 && status < 500) {
+        $scope.alertMessage = $sce.trustAsHtml("<strong>Nooo!</strong> We do not agree that is correct!");
+      } else {
+        $scope.alertMessage = $sce.trustAsHtml("<strong>Damn!</strong> Problems on our side!");
+      }
+      $scope.alertClass = "alert-danger";
+    });
+  };
 
 }])
 
 
-.controller('UserCtrl', ['$scope', '$routeParams', function($scope) {
+.controller('UserCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
   // Using route param to retrieve user data
   
 }])

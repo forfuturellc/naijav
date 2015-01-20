@@ -14,7 +14,7 @@ angular.module('Naijav.Site.Signup', ['ngRoute', 'Naijav.Site.Controllers'])
         templateUrl: baseurl + '/partials/account/',
         controller: 'AccountCtrl'
       }).
-      when('/user', {
+      when('/user/', {
         templateUrl: baseurl + '/partials/user/',
         controller: 'UserCtrl'
       }).
