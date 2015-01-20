@@ -18,7 +18,7 @@ permalink: /partials/user/
         <p>Receive email updates</p>
       </div>
       <div class="col-md-2">
-        <input type="checkbox" data-toggle="switch" ng-checked="emailUpdates">
+        <input type="checkbox" data-toggle="switch" ng-checked="settings.emailUpdates" ng-model="settings.emailUpdates">
       </div>
     </div>
 
@@ -29,8 +29,8 @@ permalink: /partials/user/
     <h3 class="user-content-heading">Feedback</h3>
     <div class="col-md-12">
       <p>While we provide a form here for providing feedback, we really suggest you use our <a href="https://github.com/forfuture-dev/naijav/issues">Github issue tracker</a> to for better tracking and response. But if you feel like that is such a task, please fill the form below.</p>
-      <form>
-        <textarea name="feedback" placeholder="Tell us what you think and feel..." class="form-control"></textarea>
+      <form ng-submit="sendFeedback()">
+        <textarea name="feedback" placeholder="Tell us what you think and feel..." class="form-control" ng-model="feedback"></textarea>
         <input type="submit" class="btn btn-primary" value="Let us know">
       </form>
     </div>
