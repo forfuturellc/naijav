@@ -44,7 +44,7 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
     })
     .success(function(data, status, headers, config) {
       $scope.alertMessage = $sce.trustAsHtml("<strong>Yeey!</strong> Switching you to your user panel...");
-      $scope.alertClass = "alert-success alert-flush bounceIn";
+      $scope.alertClass = "alert-success";
       memberCount();
       setTimeout(function() {
         $location.path("/user");
@@ -70,7 +70,7 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
     })
     .success(function(data, status, headers, config) {
       $scope.alertMessage = $sce.trustAsHtml("<strong>Okey!</strong> You are logged in! Switching you to your user panel...");
-      $scope.alertClass = "alert-success alert-flush bounceIn";
+      $scope.alertClass = "alert-success";
       setTimeout(function() {
         $location.path("/user");
         $scope.$apply();
@@ -82,7 +82,7 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
       } else {
         $scope.alertMessage = $sce.trustAsHtml("<strong>Damn!</strong> Problems on our side!");
       }
-      $scope.alertClass = "alert-danger alert-flush bounceIn";
+      $scope.alertClass = "alert-danger";
     });
   };
 
@@ -126,7 +126,7 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
     })
     .success(function(data) {
       $scope.alertMessage = $sce.trustAsHtml("<i class='fa fa-smile-o'></i> Settings saved!");
-      $scope.alertClass = "alert-success alert-flush bounceIn";
+      $scope.alertClass = "alert-success";
       setTimeout(function() {
         $scope.alertMessage = null;
         $scope.$apply();
@@ -151,9 +151,23 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
     })
     .success(function(data) {
       $scope.alertMessage = $sce.trustAsHtml("<i class='fa fa-smile-o'></i> Feedback received!");
-      $scope.alertClass = "alert-success alert-flush bounceIn";
+      $scope.alertClass = "alert-success";
       setTimeout(function() {
         $scope.alertMessage = null;
+        $scope.$apply();
+      }, timeout / 2);
+    })
+    .error(errorHandler);
+  };
+
+  // Logging out
+  $scope.logout = function() {
+    $http.get(backendUrl + "/members/logout")
+    .success(function(data) {
+      $scope.alertMessage = $sce.trustAsHtml("<i class='fa fa-frown-o'></i> Logged out!");
+      $scope.alertClass = "alert-success";
+      setTimeout(function() {
+        $location.path("/account");
         $scope.$apply();
       }, timeout / 2);
     })

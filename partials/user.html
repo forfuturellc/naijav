@@ -7,7 +7,7 @@ permalink: /partials/user/
 
   <!--Request Alerts-->
   <div class="top-center">
-    <div class="alert transition ngClass: alertClass" ng-hide="!alertMessage" ng-bind-html="alertMessage"></div>
+    <div class="alert alert-flush bounceIn ngClass: alertClass" ng-hide="!alertMessage" ng-bind-html="alertMessage"></div>
   </div>
 
   <!--Preferences-->
@@ -42,7 +42,7 @@ permalink: /partials/user/
 
   <div class="container center-spaced">
     <p>Am done. It's time to leave</p>
-    <button class="btn btn-danger">Logout</button>
+    <button class="btn btn-danger" ng-click="logout()">Logout</button>
   </div>
 
 </div>
