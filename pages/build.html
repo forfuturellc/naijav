@@ -4,8 +4,11 @@ permalink: /build/
 
 sections:
   - Prerequisites
-  - Download
+  - Download-and-Build
   - Installation
+
+css:
+  - /css/prism.css
 ---
 
 
@@ -21,13 +24,24 @@ sections:
   <p>So what do we require to build Naijav?</p>
   <ul class="list-none">
     <li><i class="fa fa-arrow-right"></i> <a href="http://ionicframework.com">Ionic</a></li>
+    <li><i class="fa fa-arrow-right"></i> <a href="http://git-scm.com">Git</a></li>
   </ul>
+  <p>Ensure you have installed these requirements as we will use then in the next steps.</p>
 </section>
 
 <section>
-  <h2>Download Source Code <a name="Download" href="#Download">#</a></h2>
+  <h2>Download and Build <a name="Download-and-Build" href="#Download-and-Build">#</a></h2>
+  <p>First, clone the Github repo.</p>
+  <pre class="language-bash"><code>⇒ git clone https://github.com/forfuture-dev/naijav.git</code></pre>
+  <p>Once that is finished. You need to add the platform you want to build Naijav for. Make sure you have all thre requirements met for the platform you want to build for. See ionic's documentaion on such requirements</p>
+  <pre class="language-bash">
+<code>⇒ ionic platform add android # for android
+⇒ ionic platform add ios # for ios
+⇒ ionic platform add <platform> # replace <platform> with your target platform</code></pre>
 </section>
 
 <section>
   <h2>Installation <a name="Installation" href="#Installation">#</a></h2>
+  <p>Now we at the good part: <strong>Building!</strong> Now type this magical command:</p>
+  <pre class="language-bash"><code>⇒ ionic build <platform> # replace <platform> with android, ios, etc.</code></pre>
 </section>
