@@ -43,8 +43,8 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
       password: $scope.newPassword
     })
     .success(function(data, status, headers, config) {
-      $scope.alertMessage = $sce.trustAsHtml("<strong>Yeey!</strong> Lets get you logged in!");
-      $scope.alertClass = "alert-success";
+      $scope.alertMessage = $sce.trustAsHtml("<strong>Yeey!</strong> Switching you to your user panel...");
+      $scope.alertClass = "alert-success alert-flush bounceIn";
       memberCount();
       setTimeout(function() {
         $location.path("/user");
@@ -69,8 +69,8 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
       password: $scope.loginPassword
     })
     .success(function(data, status, headers, config) {
-      $scope.alertMessage = $sce.trustAsHtml("<strong>Okey!</strong> You are logged in! Switching you to your user panel.");
-      $scope.alertClass = "alert-success";
+      $scope.alertMessage = $sce.trustAsHtml("<strong>Okey!</strong> You are logged in! Switching you to your user panel...");
+      $scope.alertClass = "alert-success alert-flush bounceIn";
       setTimeout(function() {
         $location.path("/user");
         $scope.$apply();
@@ -82,7 +82,7 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
       } else {
         $scope.alertMessage = $sce.trustAsHtml("<strong>Damn!</strong> Problems on our side!");
       }
-      $scope.alertClass = "alert-danger";
+      $scope.alertClass = "alert-danger alert-flush bounceIn";
     });
   };
 
@@ -126,7 +126,7 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
     })
     .success(function(data) {
       $scope.alertMessage = $sce.trustAsHtml("<i class='fa fa-smile-o'></i> Settings saved!");
-      $scope.alertClass = "alert-success alert-flush";
+      $scope.alertClass = "alert-success alert-flush bounceIn";
       setTimeout(function() {
         $scope.alertMessage = null;
         $scope.$apply();
@@ -151,7 +151,7 @@ angular.module('Naijav.Site.Controllers', ["ngResource"])
     })
     .success(function(data) {
       $scope.alertMessage = $sce.trustAsHtml("<i class='fa fa-smile-o'></i> Feedback received!");
-      $scope.alertClass = "alert-success alert-flush";
+      $scope.alertClass = "alert-success alert-flush bounceIn";
       setTimeout(function() {
         $scope.alertMessage = null;
         $scope.$apply();
