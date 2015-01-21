@@ -12,3 +12,7 @@ node_modules/
 
 # compiled scss files from ./scss/
 www/css/ionic.app.*
+
+# trash left in working directory when switching branches
+.sass-cache/
+_site/
