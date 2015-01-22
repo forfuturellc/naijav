@@ -18,24 +18,31 @@
 */
 
 
-angular.module("naijav.services", ["ngResource"])
+angular.module("naijav.services", ["Bara", "BaraData"])
 
 
-.factory("BaraService", [function() {
-  "use strict";
+.service("BaraService", ["NotificationFactory", "BaraServiceDataFixtures",
+  function(NotificationFactory, BaraServiceDataFixtures) {
+    "use strict";
 
-//  var service = $resource("http://localhost:8100");
-//  return {
-//    service: service
-//  };
-  return {
-    notifications: {
-      get: function() {
-        return [
-          {id: 1, message: "accident at strath", username: "gocho"},
-          {id: 2, message: "traffic jam", username: "brian"}
-        ];
-      }
-    }
-  };
+    // Instantiating factories
+    var notificationService = new NotificationFactory();
+    //BaraService.initializeData(BaraServiceDataFixtures.get());
+
+    // Instantiating containers
+    this.notifications = {};
+    this.routes = {};
+    this.users = {};
+
+    // Using resources
+    this.notifications.get = BaraServiceDataFixtures.getNotifications;
+    this.notifications.voteUp = function() {}; // notificationService.voteUp;
+    this.notifications.voteDown = function() {}; // notificationService.voteDown;
+    this.routes.get = BaraServiceDataFixtures.getRoutes;
+    this.users.login = function(data, callback) {
+      setTimeout(function() {
+        callback(null, false);
+      }, 2000);
+    };
+
 }]);

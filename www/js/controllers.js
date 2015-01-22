@@ -18,93 +18,84 @@
 */
 
 
-angular.module('naijav.controllers', ["Bara", "BaraData"])
+angular.module('naijav.controllers', ["naijav.services"])
 
 
 /**
 * Controller used throughout the Application
 */
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', ["$scope", "$ionicModal", "BaraService",
+  function($scope, $ionicModal, BaraService) {
+    "use strict";
+
+    // Form data for the login modal
+    $scope.loginData = {};
+
+    // Create the login modal that we will use later
+    $ionicModal.fromTemplateUrl('templates/login.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.loginModal = modal;
+    });
+
+    // Triggered in the login modal to close it
+    $scope.closeLogin = function() {
+      $scope.loginModal.hide();
+    };
+
+    // Open the login modal
+    $scope.login = function() {
+      $scope.loginModal.show();
+    };
+
+    // Perform the login action when the user submits the login form
+    $scope.doLogin = function() {
+      BaraService.users.login($scope.loginData, function(err, loggedIn) {
+        $scope.closeLogin();
+      });
+    };
+}])
+
+
+.controller("HomeCtrl", ["$scope", "BaraService", function($scope, BaraService) {
   "use strict";
 
-  // Form data for the login modal
-  $scope.loginData = {};
-
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.loginModal = modal;
-  });
-
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.loginModal.hide();
-  };
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.loginModal.show();
-  };
-
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
-})
-
-
-.controller("HomeCtrl", function($scope, BaraService, BaraServiceDataFixtures) {
-  "use strict";
-
-  BaraService.initializeData(BaraServiceDataFixtures.get());
   $scope.notifications = BaraService.notifications.get();
+  console.log($scope.notifications)
   $scope.refreshNotifications = function() {
-    var n = BaraService.notifications.get(1);
-    $scope.notifications.unshift(n);
+    $scope.notifications = BaraService.notifications.get();
     $scope.$broadcast("scroll.refreshComplete");
     $scope.$apply();
   };
-})
+}])
 
 
-.controller('NotificationCtrl', function($scope, $stateParams, BaraService) {
+.controller('NotificationCtrl', ["$scope", "$stateParams", "BaraService",
+  function($scope, $stateParams, BaraService) {
+    "use strict";
+    // We shall use the BaraService to retrieve the notification with the id
+    $scope.notification = BaraService.notifications.get($stateParams.notificationId);
+    // Allow voting up and down
+    $scope.voteUp = function() { BaraService.voteUp($stateParams.notificationId); }
+    $scope.voteDown = function() { BaraService.voteDown($stateParams.notificationId); }
+}])
+
+
+.controller("RoutesCtrl", ["$scope", "BaraService", function($scope, BaraService) {
   "use strict";
-
-  // We shall use the BaraService to retrieve the notification with the
-  // id, $stateParams.notificationId
-  console.log($stateParams);
-  $scope.notification = BaraService.notifications.get($stateParams.notificationId);
-
-  // Allow voting up and down
-  $scope.voteUp = BaraService.voteUp($stateParams.notificationId);
-  $scope.voteDown = BaraService.voteDown($stateParams.notificationId);
-})
+  $scope.routes = BaraService.routes.get();
+}])
 
 
-.controller("RoutesCtrl", function($scope, BaraServiceDataFixtures) {
+.controller("UserCtrl", ["$scope", function($scope) {
   "use strict";
-
-  $scope.routes = BaraServiceDataFixtures.getRoutes();
-})
-
-
-.controller("UserCtrl", function($scope) {
-  "use strict";
-
   // default profile pic url = img/avatar_1.png
   $scope.user = {
     name: "GochoMugo",
     email: "mugo@forfuture.co.ke",
-    imageUrl: "lib/img/gocho.png",
+    imageUrl: "img/gocho.png",
     prefs: {
       autoNotify: true
     }
   };
-});
+}]);
