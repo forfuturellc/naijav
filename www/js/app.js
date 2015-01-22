@@ -31,7 +31,7 @@ angular.module('naijav', ['ionic', 'naijav.controllers'])
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
+      window.StatusBar.styleDefault();
     }
   });
 })

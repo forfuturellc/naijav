@@ -96,6 +96,8 @@ angular.module('naijav.controllers', ["Bara", "BaraData"])
 
 
 .controller("UserCtrl", function($scope) {
+  "use strict";
+
   // default profile pic url = img/avatar_1.png
   $scope.user = {
     name: "GochoMugo",

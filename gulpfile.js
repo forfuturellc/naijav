@@ -26,7 +26,6 @@ var sh = require('shelljs');
 
 
 // gulp plugins
-var concat = require('gulp-concat');
 var jshint = require("gulp-jshint");
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');

@@ -21,7 +21,7 @@
 angular.module("naijav.services", ["ngResource"])
 
 
-.factory("BaraService", ["$resource", function($resource) {
+.factory("BaraService", [function() {
   "use strict";
 
 //  var service = $resource("http://localhost:8100");
