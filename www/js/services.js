@@ -26,7 +26,7 @@ angular.module("naijav.services", ["Bara", "BaraData"])
     "use strict";
 
     // Instantiating factories
-    var notificationService = new NotificationFactory();
+    //var notificationService = new NotificationFactory();
     //BaraService.initializeData(BaraServiceDataFixtures.get());
 
     // Instantiating containers

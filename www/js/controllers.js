@@ -51,6 +51,7 @@ angular.module('naijav.controllers', ["naijav.services"])
     // Perform the login action when the user submits the login form
     $scope.doLogin = function() {
       BaraService.users.login($scope.loginData, function(err, loggedIn) {
+        err = loggedIn = null; // for jshint to ingore unused vars
         $scope.closeLogin();
       });
     };
@@ -61,7 +62,6 @@ angular.module('naijav.controllers', ["naijav.services"])
   "use strict";
 
   $scope.notifications = BaraService.notifications.get();
-  console.log($scope.notifications)
   $scope.refreshNotifications = function() {
     $scope.notifications = BaraService.notifications.get();
     $scope.$broadcast("scroll.refreshComplete");
@@ -76,8 +76,8 @@ angular.module('naijav.controllers', ["naijav.services"])
     // We shall use the BaraService to retrieve the notification with the id
     $scope.notification = BaraService.notifications.get($stateParams.notificationId);
     // Allow voting up and down
-    $scope.voteUp = function() { BaraService.voteUp($stateParams.notificationId); }
-    $scope.voteDown = function() { BaraService.voteDown($stateParams.notificationId); }
+    $scope.voteUp = function() { BaraService.voteUp($stateParams.notificationId); };
+    $scope.voteDown = function() { BaraService.voteDown($stateParams.notificationId); };
 }])
 
 
