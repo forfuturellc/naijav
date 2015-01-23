@@ -58,6 +58,16 @@ angular.module('naijav', ['ionic', 'naijav.controllers'])
     }
   })
 
+  .state('app.post', {
+    url: "/post",
+    views: {
+      'mainContent': {
+        templateUrl: "templates/post.html",
+        controller: "PostCtrl"
+      }
+    }
+  })
+
   .state('app.settings', {
     url: "/settings",
     views: {

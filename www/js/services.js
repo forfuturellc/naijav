@@ -21,12 +21,13 @@
 angular.module("naijav.services", ["Bara", "BaraData"])
 
 
-.service("BaraService", ["NotificationFactory", "BaraServiceDataFixtures",
+.service("BaraService", ["Notifications", "BaraServiceDataFixtures",
   function(NotificationFactory, BaraServiceDataFixtures) {
     "use strict";
 
     // Instantiating factories
-    //var notificationService = new NotificationFactory();
+    var notificationService = NotificationFactory;
+    console.log(notificationService);
     //BaraService.initializeData(BaraServiceDataFixtures.get());
 
     // Instantiating containers
@@ -35,7 +36,12 @@ angular.module("naijav.services", ["Bara", "BaraData"])
     this.users = {};
 
     // Using resources
-    this.notifications.get = BaraServiceDataFixtures.getNotifications;
+    // BaraServiceDataFixtures.getNotifications;
+    this.notifications.get = function(callback) {
+      notificationService.get(function(data) {
+        callback(data.notifications);
+      });
+    };
     this.notifications.voteUp = function() {}; // notificationService.voteUp;
     this.notifications.voteDown = function() {}; // notificationService.voteDown;
     this.routes.get = BaraServiceDataFixtures.getRoutes;
@@ -43,6 +49,11 @@ angular.module("naijav.services", ["Bara", "BaraData"])
       setTimeout(function() {
         callback(null, false);
       }, 2000);
+    };
+
+    // Posting a notification
+    this.postNotification = function(user, message, callback) {
+      callback();
     };
 
 }]);

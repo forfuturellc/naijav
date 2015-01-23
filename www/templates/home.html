@@ -19,6 +19,12 @@
 -->
 
 <ion-view name="timeline" view-title="Timeline">
+
+  <!--Button to Post a new Notification-->
+  <ion-nav-buttons side="right">
+    <a class="button button-icon button-clear ion-plus-circled" href="#/app/post"></a>
+  </ion-nav-buttons>
+
   <ion-content>
     <ion-refresher pulling-text="Pull to refresh" on-refresh="refreshNotifications()"></ion-refresher>
     <ion-list>
@@ -32,4 +38,5 @@
       </ion-item>
     </ion-list>
   </ion-content>
+
 </ion-view>

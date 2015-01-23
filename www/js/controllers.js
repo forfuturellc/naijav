@@ -61,11 +61,15 @@ angular.module('naijav.controllers', ["naijav.services"])
 .controller("HomeCtrl", ["$scope", "BaraService", function($scope, BaraService) {
   "use strict";
 
-  $scope.notifications = BaraService.notifications.get();
+  BaraService.notifications.get(function(notifications) {
+    $scope.notifications = notifications;
+  });
   $scope.refreshNotifications = function() {
-    $scope.notifications = BaraService.notifications.get();
-    $scope.$broadcast("scroll.refreshComplete");
-    $scope.$apply();
+    $scope.notifications = BaraService.notifications.get(function(notifications) {
+      $scope.notifications = notifications;
+      $scope.$broadcast("scroll.refreshComplete");
+      $scope.$apply();
+    });
   };
 }])
 
@@ -98,4 +102,29 @@ angular.module('naijav.controllers', ["naijav.services"])
       autoNotify: true
     }
   };
+}])
+
+
+.controller("PostCtrl", ["$scope", "$ionicPopup", "$timeout", "BaraService", "$location",
+  function($scope, $ionicPopup, $timeout, BaraService, $location) {
+    "use strict";
+
+    $scope.date = Date.now();
+    $scope.user = {
+      username: "gocho",
+      profilepic: "/img/gocho.png"
+    };
+    $scope.message = $scope.error = null;
+    $scope.submitPost = function() {
+      BaraService.postNotification($scope.user, $scope.message, function(err) {
+        var alertPopup = $ionicPopup.alert({
+           title: 'Post Request Status',
+           template:  err ? 'Post Submission failed' : 'Post Submission succeeded'
+         });
+         alertPopup.then(function(res) {
+           if (! err) { $location.path("/app"); }
+         });
+      });
+    };
+
 }]);

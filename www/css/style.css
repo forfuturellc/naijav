@@ -81,3 +81,8 @@
   background: transparent;
   border: 0;
 }
+
+
+.post textarea {
+  min-height: 100px;
+}

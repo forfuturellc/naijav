@@ -1,5 +1,5 @@
 <!--
-* Template for viewing saccos
+* View for browsing saccos and routes
 * Copyright (C) 2014-2015  Forfuture LLC <we@forfuture.co.ke>
 *
 * This program is free software; you can redistribute it and/or modify
@@ -18,12 +18,30 @@
 -->
 
 
-<ion-view view-title="Saccos" >
+<ion-view view-title="Post a New Notification" class="post">
   <ion-content>
-    <div class="card">
-      <div class="item item-text-wrap">
-        Error loading Saccos
+
+    <div class="list card">
+
+      <div class="item item-avatar">
+        <img src="{{ user.profilepic }}">
+        <h2>{{ user.username }}</h2>
+        <p>{{ date | date:'yyyy-MM-dd' }}</p>
       </div>
+
+      <div class="item item-body">
+        <!--Form-->
+        <textarea ng-model="message" placeholder="Content goes here..."></textarea>
+        <!--/Form-->
+      </div>
+
+      <div class="item">
+        <button ng-click="submitPost()" class="button button-block button-outline button-positive">
+          Submit
+        </button>
+      </div>
+
     </div>
+
   </ion-content>
 </ion-view>
