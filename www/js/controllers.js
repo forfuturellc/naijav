@@ -62,11 +62,11 @@ angular.module('naijav.controllers', ["naijav.services"])
   "use strict";
 
   BaraService.notifications.get(function(notifications) {
-    $scope.notifications = notifications;
+    $scope.notifications = notifications.reverse();
   });
   $scope.refreshNotifications = function() {
     $scope.notifications = BaraService.notifications.get(function(notifications) {
-      $scope.notifications = notifications;
+      $scope.notifications = notifications.reverse();
       $scope.$broadcast("scroll.refreshComplete");
       $scope.$apply();
     });
@@ -105,8 +105,8 @@ angular.module('naijav.controllers', ["naijav.services"])
 }])
 
 
-.controller("PostCtrl", ["$scope", "$ionicPopup", "$timeout", "BaraService", "$location",
-  function($scope, $ionicPopup, $timeout, BaraService, $location) {
+.controller("PostCtrl", ["$scope", "$ionicPopup", "$timeout", "BaraService", "$state",
+  function($scope, $ionicPopup, $timeout, BaraService, $state) {
     "use strict";
 
     $scope.date = Date.now();
@@ -114,15 +114,15 @@ angular.module('naijav.controllers', ["naijav.services"])
       username: "gocho",
       profilepic: "/img/gocho.png"
     };
-    $scope.message = $scope.error = null;
+    $scope.txtMessage = "";
     $scope.submitPost = function() {
-      BaraService.postNotification($scope.user, $scope.message, function(err) {
+      BaraService.postNotification($scope.user, $scope.txtMessage, function(err) {
         var alertPopup = $ionicPopup.alert({
            title: 'Post Request Status',
-           template:  err ? 'Post Submission failed' : 'Post Submission succeeded'
+           template: err ? 'Post Submission failed' : 'Post Submission succeeded'
          });
          alertPopup.then(function(res) {
-           if (! err) { $location.path("/app"); }
+           if (! err) { $state.go("app.home"); }
          });
       });
     };
