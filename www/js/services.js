@@ -40,6 +40,8 @@ angular.module("naijav.services", ["Bara", "BaraData"])
     this.notifications.get = function(callback) {
       notificationService.get(function(data) {
         callback(data.notifications);
+      }, function() {
+        callback(null);
       });
     };
     this.notifications.voteUp = function() {}; // notificationService.voteUp;

@@ -61,12 +61,19 @@ angular.module('naijav.controllers', ["naijav.services"])
 .controller("HomeCtrl", ["$scope", "BaraService", function($scope, BaraService) {
   "use strict";
 
+  function handleError() { }
+
   BaraService.notifications.get(function(notifications) {
-    $scope.notifications = notifications.reverse();
+    if (! notifications) { return handleError(); }
+    return $scope.notifications = notifications.reverse();
   });
   $scope.refreshNotifications = function() {
     $scope.notifications = BaraService.notifications.get(function(notifications) {
-      $scope.notifications = notifications.reverse();
+      if (! notifications) {
+        handleError();
+      } else {
+        $scope.notifications = notifications.reverse();
+      }
       $scope.$broadcast("scroll.refreshComplete");
       $scope.$apply();
     });
