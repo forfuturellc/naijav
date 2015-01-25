@@ -28,6 +28,11 @@ angular.module('naijav.controllers', ["naijav.services"])
   function($scope, $ionicModal, UserService) {
     "use strict";
 
+    // Login prompt in left menu
+    $scope.loginHandle = UserService.isLoggedIn()
+      ? { label: "Logout", func: logout }
+      : { label: "Login", func: login };
+
     // Form data for the login modal
     $scope.loginData = {};
 
@@ -39,22 +44,28 @@ angular.module('naijav.controllers', ["naijav.services"])
     });
 
     // Triggered in the login modal to close it
-    $scope.closeLogin = function() {
+    $scope.closeLogin = function closeLogin() {
       $scope.loginModal.hide();
     };
 
     // Open the login modal
-    $scope.login = function() {
+    function login() {
       $scope.loginModal.show();
+    };
+
+    // Doing log out
+    function logout() {
+      UserService.logoutUser();
     };
 
     // Perform the login action when the user submits the login form
     $scope.doLogin = function() {
       UserService.loginUser($scope.loginData, function(loggedIn) {
         loggedIn = null; // for jshint to ingore unused vars
-        $scope.closeLogin();
+        closeLogin();
       });
     };
+
 }])
 
 

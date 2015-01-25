@@ -105,4 +105,14 @@ angular.module("naijav.services", ["Bara", "BaraData"])
     });
   };
 
+  // log out user
+  this.logoutUser = function() {
+    window.localStorage["user"] = null;
+  };
+
+  // check if user is logged in
+  this.isLoggedIn = function isLoggedIn() {
+    return Boolean(window.localStorage["user"]);
+  };
+
 }]);
