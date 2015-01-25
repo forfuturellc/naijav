@@ -63,7 +63,7 @@ angular.module("naijav.services", ["Bara", "BaraData"])
   var dummyUser = {
     username: "GochoMugo",
     email: "mugo@forfuture.co.ke",
-    imageUrl: "img/gocho.png",
+    profPicUrl: "img/gocho.png",
     preferences: {
       autoNotify: true
     }

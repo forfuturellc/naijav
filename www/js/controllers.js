@@ -117,14 +117,11 @@ angular.module('naijav.controllers', ["naijav.services"])
 
 
 .controller("PostCtrl", ["$scope", "$ionicPopup", "$timeout", "BaraService", "$state",
-  function($scope, $ionicPopup, $timeout, BaraService, $state) {
+  "UserService", function($scope, $ionicPopup, $timeout, BaraService, $state, UserService) {
     "use strict";
 
     $scope.date = Date.now();
-    $scope.user = {
-      username: "gocho",
-      profilepic: "/img/gocho.png"
-    };
+    $scope.user = UserService.getUserInformation();
     $scope.txtMessage = "";
     $scope.submitPost = function() {
       BaraService.postNotification($scope.user, $scope.txtMessage, function(err) {
