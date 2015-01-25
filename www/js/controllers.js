@@ -73,9 +73,9 @@ angular.module('naijav.controllers', ["naijav.services"])
         handleError();
       } else {
         $scope.notifications = notifications.reverse();
+        $scope.$apply();
       }
       $scope.$broadcast("scroll.refreshComplete");
-      $scope.$apply();
     });
   };
 }])
