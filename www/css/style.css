@@ -86,3 +86,14 @@
 .post textarea {
   min-height: 100px;
 }
+
+.view-routes .item-input-wrapper {
+  background: transparent;
+  margin: 0;
+  border: 1px solid #b2b2b2;
+}
+
+.view-routes .button {
+  background: transparent;
+  margin-left: 4px;
+}
