@@ -21,7 +21,7 @@
 angular.module("naijav.services", ["Bara", "BaraData"])
 
 
-.service("BaraService", ["Notifications", "BaraServiceDataFixtures",
+.service("BaraService", ["BaraNotifications", "BaraServiceDataFixtures",
   function(NotificationFactory, BaraServiceDataFixtures) {
     "use strict";
 
@@ -60,4 +60,21 @@ angular.module("naijav.services", ["Bara", "BaraData"])
       });
     };
 
+}])
+
+
+.service("UserService", ["BaraUsers", function(BaraUsers) {
+  "use strict";
+  this.getUserInformation = function() {
+    return {
+      username: "GochoMugo",
+      email: "mugo@forfuture.co.ke",
+      imageUrl: "img/gocho.png",
+      preferences: {
+        autoNotify: true
+      }
+    };
+  };
+  this.storeUserInformation = function() { };
+  this.loginUser = function() { };
 }]);

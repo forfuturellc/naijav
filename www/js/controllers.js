@@ -98,17 +98,10 @@ angular.module('naijav.controllers', ["naijav.services"])
 }])
 
 
-.controller("UserCtrl", ["$scope", function($scope) {
+.controller("UserCtrl", ["$scope", "UserService", function($scope, UserService) {
   "use strict";
   // default profile pic url = img/avatar_1.png
-  $scope.user = {
-    name: "GochoMugo",
-    email: "mugo@forfuture.co.ke",
-    imageUrl: "img/gocho.png",
-    prefs: {
-      autoNotify: true
-    }
-  };
+  $scope.user = UserService.getUserInformation();
 }])
 
 
