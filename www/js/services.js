@@ -60,20 +60,49 @@ angular.module("naijav.services", ["Bara", "BaraData"])
 
 .service("UserService", ["BaraUsers", function(BaraUsers) {
   "use strict";
-  this.getUserInformation = function() {
-    return {
-      username: "GochoMugo",
-      email: "mugo@forfuture.co.ke",
-      imageUrl: "img/gocho.png",
-      preferences: {
-        autoNotify: true
-      }
-    };
+  var dummyUser = {
+    username: "GochoMugo",
+    email: "mugo@forfuture.co.ke",
+    imageUrl: "img/gocho.png",
+    preferences: {
+      autoNotify: true
+    }
   };
-  this.storeUserInformation = function() { };
-  this.loginUser = function() {
-    setTimeout(function() {
-      callback(null, false);
-    }, 2000);
+
+  // getting user information from local storage
+  this.getUserInformation = function getUserInformation() {
+    try {
+      return JSON.parse(window.localStorage["user"]);
+    } catch (parseError) {
+      return dummyUser;
+    }
   };
+
+  // storing user information into local storage
+  this.storeUserInformation = function storeUserInformation(changesObj) {
+    var userObj = getUserInformation();
+    for (var key in changesObj) {
+      userObj[key] = changesObj[key];
+    }
+    window.localStorage["user"] = JSON.stringify(userObj);
+    return userObj;
+  };
+
+  // login in user to the service
+  this.loginUser = function loginUser(loginData, callback) {
+    BaraUsers.login({username: loginData.username, password: loginData.password},
+      function(remoteData) {
+        storeUserInformation({
+          username: remoteData.username,
+          email: remoteData.email,
+          password: loginData.password,
+          preferences: remoteData.preferences
+        });
+        callback(true);
+      },
+      function() {
+        callback(false);
+    });
+  };
+
 }]);
