@@ -24,7 +24,7 @@ angular.module('naijav.controllers', ["naijav.services"])
 /**
 * Controller used throughout the Application
 */
-.controller('AppCtrl', ["$scope", "$ionicModal", "BaraService",
+.controller('AppCtrl', ["$scope", "$ionicModal", "UserService",
   function($scope, $ionicModal, BaraService) {
     "use strict";
 
@@ -50,7 +50,7 @@ angular.module('naijav.controllers', ["naijav.services"])
 
     // Perform the login action when the user submits the login form
     $scope.doLogin = function() {
-      BaraService.users.login($scope.loginData, function(err, loggedIn) {
+      UserService.loginUser($scope.loginData, function(err, loggedIn) {
         err = loggedIn = null; // for jshint to ingore unused vars
         $scope.closeLogin();
       });

@@ -47,11 +47,6 @@ angular.module("naijav.services", ["Bara", "BaraData"])
     this.notifications.voteUp = function() {}; // notificationService.voteUp;
     this.notifications.voteDown = function() {}; // notificationService.voteDown;
     this.routes.get = BaraServiceDataFixtures.getRoutes;
-    this.users.login = function(data, callback) {
-      setTimeout(function() {
-        callback(null, false);
-      }, 2000);
-    };
 
     // Posting a notification
     this.postNotification = function(user, message, callback) {
@@ -76,5 +71,9 @@ angular.module("naijav.services", ["Bara", "BaraData"])
     };
   };
   this.storeUserInformation = function() { };
-  this.loginUser = function() { };
+  this.loginUser = function() {
+    setTimeout(function() {
+      callback(null, false);
+    }, 2000);
+  };
 }]);
