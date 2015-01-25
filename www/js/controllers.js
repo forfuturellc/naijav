@@ -65,7 +65,7 @@ angular.module('naijav.controllers', ["naijav.services"])
 
   BaraService.notifications.get(function(notifications) {
     if (! notifications) { return handleError(); }
-    return $scope.notifications = notifications.reverse();
+    $scope.notifications = notifications.reverse();
   });
   $scope.refreshNotifications = function() {
     $scope.notifications = BaraService.notifications.get(function(notifications) {
@@ -128,7 +128,7 @@ angular.module('naijav.controllers', ["naijav.services"])
            title: 'Post Request Status',
            template: err ? 'Post Submission failed' : 'Post Submission succeeded'
          });
-         alertPopup.then(function(res) {
+         alertPopup.then(function() {
            if (! err) { $state.go("app.home"); }
          });
       });

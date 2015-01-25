@@ -56,7 +56,7 @@ angular.module("naijav.services", ["Bara", "BaraData"])
     // Posting a notification
     this.postNotification = function(user, message, callback) {
       notificationService.post({ message: message, username: "gocho", userId: 1 }, function(data) {
-        callback();
+        callback(data);
       });
     };
 
