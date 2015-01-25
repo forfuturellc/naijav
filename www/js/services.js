@@ -70,23 +70,25 @@ angular.module("naijav.services", ["Bara", "BaraData"])
   };
 
   // getting user information from local storage
-  this.getUserInformation = function getUserInformation() {
+  function getUserInformation() {
     try {
-      return JSON.parse(window.localStorage["user"]);
+      return JSON.parse(window.localStorage.user);
     } catch (parseError) {
       return dummyUser;
     }
-  };
+  }
+  this.getUserInformation = getUserInformation;
 
   // storing user information into local storage
-  this.storeUserInformation = function storeUserInformation(changesObj) {
+  function storeUserInformation(changesObj) {
     var userObj = getUserInformation();
     for (var key in changesObj) {
       userObj[key] = changesObj[key];
     }
-    window.localStorage["user"] = JSON.stringify(userObj);
+    window.localStorage.user = JSON.stringify(userObj);
     return userObj;
-  };
+  }
+  this.storeUserInformation = storeUserInformation;
 
   // login in user to the service
   this.loginUser = function loginUser(loginData, callback) {
@@ -107,12 +109,12 @@ angular.module("naijav.services", ["Bara", "BaraData"])
 
   // log out user
   this.logoutUser = function() {
-    window.localStorage["user"] = null;
+    window.localStorage.user = null;
   };
 
   // check if user is logged in
   this.isLoggedIn = function isLoggedIn() {
-    return Boolean(window.localStorage["user"]);
+    return Boolean(window.localStorage.user);
   };
 
 }]);
