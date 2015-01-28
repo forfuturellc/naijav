@@ -34,7 +34,7 @@ script:
 - ionic build android
 
 after_success:
-- pip install -r ci-requirements.txt
+- sudo pip install -r ci-requirements.txt
 - python ci-release.py
 
 after_failure:
