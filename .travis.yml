@@ -35,7 +35,7 @@ script:
 
 after_success:
 - sudo pip install -r ci-requirements.txt
-- python ci-release.py
+- [ ${TRAVIS_BRANCH} == "develop" ] && python ci-release.py
 
 after_failure:
 - echo "After failure stage"

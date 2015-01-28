@@ -1,10 +1,18 @@
 
 # naijav
 
-[![Build Status](https://travis-ci.org/forfuture-dev/naijav.svg?branch=develop)](https://travis-ci.org/forfuture-dev/naijav) [![Dependency Status](https://gemnasium.com/forfuture-dev/naijav.svg)](https://gemnasium.com/forfuture-dev/naijav) [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.dropbox.com/sh/5hnubkmkuqja32x/AAB-1znasyDGldyDT82Ksh-Ka?dl=0)
+[![Build Status](https://travis-ci.org/forfuture-dev/naijav.svg?branch=develop)](https://travis-ci.org/forfuture-dev/naijav) [![Dependency Status](https://gemnasium.com/forfuture-dev/naijav.svg)](https://gemnasium.com/forfuture-dev/naijav)
 
 A Client Application for the [Bara Transport Notification System][bara],
  localized for Matatus in Kenya
+
+
+## continuous builds
+
+We continuously build the application as new commits are pushed to the
+ __develop__ branch. Click on the big badge below to get the latest builds.
+
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.dropbox.com/sh/5hnubkmkuqja32x/AAB-1znasyDGldyDT82Ksh-Ka?dl=0)
 
 
 ## license:

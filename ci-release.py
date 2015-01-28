@@ -33,5 +33,5 @@ paths={
 
 for target in paths.keys():
   with open(paths[target]["local"], 'rb') as package:
-    response = dropbox_bot.put_file(paths[target]["dropbox"], package)
+    response = dropbox_bot.put_file(paths[target]["dropbox"], package, overwrite=True)
     print(response)
