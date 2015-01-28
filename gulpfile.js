@@ -87,7 +87,7 @@ gulp.task('sass', function(done) {
 gulp.task("jshint", function() {
   "use strict";
 
- gulp.src(lodash.flatten(["gulpfile.js", "ci-release.js", paths.js]))
+ gulp.src(lodash.flatten(["gulpfile.js", paths.js]))
     .pipe(jshint())
     .pipe(jshint.reporter("default"))
     .pipe(jshint.reporter("fail"));

@@ -9,16 +9,14 @@ android:
 
 env:
   global:
-  - secure: jBwIcgiiiNVPlrWgnAFoQR6ztk6s8mA8Ww56ujYBnJy0m25Qt3av00nR0AR8WkrCe0tdIf967LYXpX1BzYxMNWowzsS7sU+v73uYgAXzmh8EBAsczPqyX2KMYDsOGg0ejee5wVReuGh1HmlPxwuVerut0uIRF+iZhukG2rQqZgc=
-  - secure: Iey4n5s4lYdnzjrvX6dNO/0sFnMO5Oyh2De+howxwoF9I0pQVAdzvjIw/MYdkPiOidg00v96zs3ocwCbAD4v6AFKTv6X/BznJSg4hqE6chPYD+N1HajjS64Oe+RSGmLdZepxeAj9ZDcPTfpKL805arvjR3A1O9Rxnz2L+jf4C2o=
-  - secure: lSNbFlqRt0MjjvZ6XvpxT/pSwZYnDkkZQQL/3M+FLZ1fx2TlKyaTp4UpRSFYL4yGa9zNX+4+PrIjOg+RO3P9/6B05r5o08iV+OLvpqj8KE1Rfv/zQxzj31a79AM+JrkoXcJdg4Mz3P5vjdD3N3Z7y+f1s++BgaM/ZcZ8OyW639c=
+    secure: MkYSvOdrIXqcO5JNl/NRQSmShIQVfzXA4lmDCtwCQ+LNoIEO1qt+qJSPL654eqzVt75RAL/vSLIrPb4i/MMRvbTzkrpDiM45bbmouWV29amIFEaF05/Q7Fi7EoLcoZ3l8jUxB9rLAHUHkcEkc4BQdioAsq/JdF2FsfgN0Mz5h/c=
 
 before_install:
 - echo "Before install stage"
 
 install:
 - echo "Install stage"
-- sudo apt-get install -y python-software-properties
+- sudo apt-get install -y python python-software-properties
 - sudo add-apt-repository -y ppa:chris-lea/node.js
 - sudo apt-get update -y
 - sudo apt-get install -y nodejs imagemagick
@@ -36,7 +34,8 @@ script:
 - ionic build android
 
 after_success:
-- nodejs ci-release.js
+- pip install -r ci-requirements.txt
+- python ci-release.py
 
 after_failure:
 - echo "After failure stage"
