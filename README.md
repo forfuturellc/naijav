@@ -11,7 +11,7 @@ A Client Application for the [Bara Transport Notification System][bara].
 We continuously build the application as new commits are pushed to the
  __develop__ branch. Click on the big badge below to get the latest builds.
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.dropbox.com/sh/5hnubkmkuqja32x/AAB-1znasyDGldyDT82Ksh-Ka?dl=0)
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.dropbox.com/sh/3u1ghszhqaxlieb/AABHRdKQgi6K0DCoeSmDj7rpa?dl=0)
 
 > Stable releases are __not__ yet ready. Use of this application assumes
 > your full acceptance of the license shown below.
