@@ -1,11 +1,8 @@
-language: android
+language: node_js
 
-android:
-  components:
-  - platform-tools
-  - tools
-  - build-tools-19.0.0
-  - android-19
+node_js:
+- "0.11"
+- "0.10"
 
 env:
   global:
@@ -16,10 +13,6 @@ before_install:
 
 install:
 - echo "Install stage"
-- sudo apt-get install -y python python-software-properties
-- sudo add-apt-repository -y ppa:chris-lea/node.js
-- sudo apt-get update -y
-- sudo apt-get install -y nodejs imagemagick
 - sudo npm -g install cordova ionic bower gulp cordova-gen
 - sudo npm install
 - bower install
@@ -30,10 +23,11 @@ before_script:
 script:
 - echo "Script stage"
 - npm test
-- ionic platform add android
-- ionic build android
 
 after_success:
+- curl https://raw.githubusercontent.com/GochoMugo/ionic-ci-script/master/prepare-debian-ubuntu.sh | sudo sh
+- ionic platform add android
+- ionic build android
 - sudo pip install -r ci-requirements.txt
 - '[ ${TRAVIS_BRANCH} == "develop" ] && python ci-release.py'
 
