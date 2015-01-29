@@ -13,8 +13,8 @@ before_install:
 
 install:
 - echo "Install stage"
-- sudo npm -g install cordova ionic bower gulp cordova-gen
-- sudo npm install
+- npm -g install cordova ionic bower gulp cordova-gen
+- npm install
 - bower install
 
 before_script:
