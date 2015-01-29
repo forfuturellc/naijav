@@ -21,12 +21,13 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 import dropbox
 import os
 
+
 DBOX_KEY = os.environ["DBOX_KEY"]
 dropbox_bot = dropbox.client.DropboxClient(DBOX_KEY)
 paths={
   "android": {
     "local": "platforms/android/ant-build/CordovaApp-debug.apk",
-    "dropbox": "/android/android.apk"
+    "dropbox": "/android/naijav.apk"
   }
 }
 
