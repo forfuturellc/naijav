@@ -25,8 +25,8 @@ script:
 
 after_success:
 - curl https://raw.githubusercontent.com/GochoMugo/ionic-ci-script/master/prepare-debian-ubuntu.sh -O
-- sudo -E -s
-- source prepare-debian-ubuntu.sh
+- sudo prepare-debian-ubuntu.sh
+- source prepare-debian-ubuntu.sh --env
 - ionic platform add android
 - ionic build android
 - sudo pip install -r ci-requirements.txt
